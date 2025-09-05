@@ -1,0 +1,178 @@
+/* Pixel art and Japanese retro aesthetic styling */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+/* Custom animations for ocean and retro effects */
+@keyframes wave-animation {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-2px) translateY(-1px); }
+  50% { transform: translateX(2px) translateY(1px); }
+  75% { transform: translateX(-1px) translateY(2px); }
+}
+
+@keyframes boat-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(1deg); }
+  50% { transform: translateY(-6px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-1deg); }
+}
+
+@keyframes fish-jump {
+  0% { transform: translateY(0px) scale(1); opacity: 0; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+  100% { transform: translateY(-40px) scale(0.8); opacity: 0; }
+}
+
+@keyframes pixel-glow {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(64, 224, 208, 0.3);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes depth-pulse {
+  0%, 100% { background-color: rgba(25, 25, 112, 0.8); }
+  50% { background-color: rgba(0, 100, 100, 0.9); }
+}
+
+@keyframes storm-flash {
+  0%, 90%, 100% { opacity: 0.1; }
+  5%, 85% { opacity: 0.8; }
+}
+
+@keyframes jellyfish-glow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.6));
+    transform: translateY(0px);
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.9));
+    transform: translateY(-10px);
+  }
+}
+
+body {
+  font-family: 'Silkscreen', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  background: linear-gradient(180deg, #87CEEB 0%, #4682B4 50%, #191970 100%);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.pixel-font {
+  font-family: 'Silkscreen', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.pixel-border {
+  border: 2px solid;
+  border-image: url("data:image/svg+xml,%3csvg width='8' height='8' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M0,0 L8,0 L8,8 L0,8 Z' fill='none' stroke='%23ffffff' stroke-width='2'/%3e%3c/svg%3e") 2;
+}
+
+.retro-button {
+  background: linear-gradient(145deg, #40E0D0, #20B2AA);
+  border: 2px solid #ffffff;
+  box-shadow: 
+    inset 1px 1px 0px rgba(255,255,255,0.5),
+    inset -1px -1px 0px rgba(0,0,0,0.3),
+    2px 2px 4px rgba(0,0,0,0.3);
+  transition: all 0.1s ease;
+}
+
+.retro-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    inset 1px 1px 0px rgba(255,255,255,0.7),
+    inset -1px -1px 0px rgba(0,0,0,0.2),
+    3px 3px 6px rgba(0,0,0,0.4);
+}
+
+.retro-button:active {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 1px 1px 0px rgba(0,0,0,0.3),
+    inset -1px -1px 0px rgba(255,255,255,0.2),
+    1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.ocean-waves {
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.1) 21px,
+      rgba(255,255,255,0.1) 22px
+    );
+  animation: wave-animation 4s ease-in-out infinite;
+}
+
+.boat-floating {
+  animation: boat-float 6s ease-in-out infinite;
+}
+
+.fish-caught {
+  animation: fish-jump 1s ease-out forwards;
+}
+
+.pixel-glow {
+  animation: pixel-glow 2s ease-in-out infinite;
+}
+
+.depth-indicator {
+  animation: depth-pulse 3s ease-in-out infinite;
+}
+
+.storm-effect {
+  animation: storm-flash 0.5s ease-in-out infinite;
+}
+
+.jellyfish-effect {
+  animation: jellyfish-glow 4s ease-in-out infinite;
+}
+
+/* Scrollbar styling for retro feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #191970;
+  border: 1px solid #40E0D0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #40E0D0, #20B2AA);
+  border: 1px solid #ffffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #48D1CC, #2F4F4F);
+}
+
+/* Mobile touch feedback */
+@media (max-width: 768px) {
+  .retro-button:active {
+    transform: scale(0.95);
+  }
+  
+  .fish-area:active {
+    transform: scale(0.98);
+  }
+}
+
+/* High DPI displays - maintain pixel art crispness */
+@media (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    image-rendering: pixelated;
+  }
+}
